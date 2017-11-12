@@ -1,0 +1,6 @@
+# FOLDERS AND FILES TO BE IGNORED AND NOT UPLOADED TO GIT
+
+# IGNORE FILES
+node_modules/
+.env
+package.json
