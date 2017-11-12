@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static "css/styles.css" %}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700|Slabo" rel="stylesheet"/>
+	<title>Project: Employee Review</title>
+{#  <link rel="stylesheet" type="text/css" href="{% static 'css/skin-blue.min.css' %}">#}
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="logo">
+		<img src=#>
+	</div>
+
+	<div class="nav nav-logged">
+		<ul>
+			<li>Home</li>
+			<li>Jobs</li>
+			<li>Co-Workers</li>
+			<li>Messaging</li>
+			<li>Notifications</li>
+			<li><img src=""></li>
+			<li></li>
+		</ul>
+		<div class="login logged-in">
+			<p>Welcome, Autif!</p>
+		</div>
+	</div>
+
+	<div class="employee-flex">
+		<div class="employee-intro">
+			<div>
+				<img src="../img/autif_beach_resize.jpg" alt="">
+			</div>
+			<div>
+				<p>{{ employee.first_name }} {{ employee.last_name }}</p>
+			</div>
+		</div>
+		<div class="employee-overview">
+			<div class="employee-rating">
+				<p><img src="../img/star_resize.png"></p>
+				<p><img src="../img/star_resize.png"></p>
+				<p><img src="../img/star_resize.png"></p>
+				<p><img src="../img/star_resize.png"></p>
+				<p><img src="../img/star_resize.png"></p>
+				<p class="final-rating"> 4.8</p>
+			</div>
+			<div class="employee-business">
+				<p>Cptn Web</p>
+				<p>(949) 690 - 0046</p>
+			</div>
+			<div class="employee-position">
+				<p>{{ employee.job_title }}</p>
+				<p>{{ employee.email }}</p>
+			</div>
+		</div>
+		<div class="employee-contact">
+			<div class="job-contact">
+				<p class="interview">Interview</p>
+				<p class="offer">Make Offer</p>
+			</div>
+			<div class="employee-phone">
+
+			</div>
+			<div class="employee-email">
+
+			</div>
+		</div>
+	</div>
+
+	<div class="review">
+		<table class="reviews-stats">
+			<tr>
+				<!-- All inserted with backend -->
+
+				<td><strong>Employee: Fabio Douglas</strong></td>
+				<td><strong>Company: Improving Houston</strong></td>
+				<td><strong>Date: 11/4/17</strong></td>
+			</tr>
+
+			<tr>
+				<td><strong>Metrics</strong></td>
+				<td><strong>Review</strong></td>
+				<td><strong>Description</strong></td>
+			</tr>
+			<tr>
+				<td>Effectiveness</td>
+				<td><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"></td>
+				<td>He's effective</td>
+			</tr>
+
+			<tr>
+				<td>Speed</td>
+				<td><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"></td>
+				<td>He's fast</td>
+			</tr>
+
+			<tr>
+				<td>Communication</td>
+				<td><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"></td>
+				<td>He communicates</td>
+			</tr>
+
+			<tr>
+				<td>Organization</td>
+				<td><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"></td>
+				<td>He's organized</td>
+			</tr>
+
+			<tr>
+				<td>Reliability</td>
+				<td><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"></td>
+				<td>He's reliable</td>
+			</tr>
+
+		</table>
+
+		<div class="text-review">
+			<div class="text-review-header">
+			<h2>Overall Review</h2>
+			<div class="stars"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"><img src="../img/star_resize.png"></div>
+			<p class="overall-rating">5.0</p>
+			</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel vestibulum justo. Aliquam eget accumsan erat. Integer gravida euismod faucibus. Maecenas vehicula auctor rutrum. Etiam eu dolor sed arcu faucibus pretium vitae at nibh. Quisque a tempus elit. Ut egestas tellus nec dolor gravida, nec sagittis libero molestie. Maecenas a lectus vitae odio tincidunt aliquet. Vivamus porta mi ante, ut volutpat enim tempor ac. Etiam consequat mollis dui.</p>
+		</div>
+
+	</div>

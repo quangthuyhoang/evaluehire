@@ -1,0 +1,245 @@
+body {
+	margin: 0%;
+}
+
+.nav {
+	display: flex;
+	background-color: #006064;
+	color: white;
+	padding-top: 10px;
+}
+
+.nav ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	width: 50%;
+}
+
+.nav ul li {
+	display: inline-block;
+}
+
+.nav-logged ul {
+	width: 100% !important;
+}
+
+.login {
+	width: 75%;
+	/*padding-top: 5px;*/
+}
+
+.logged-in {
+	width: 20%;
+}
+
+.pw {
+	margin-left: 3%;
+}
+
+.demo {
+	text-align: center;
+	height: 200px;
+}
+
+.demo h1 {
+	margin-top: 15%;
+	margin-bottom: 15%;
+}
+
+.search-field {
+	text-align: center; 
+}
+
+.input-search {
+	width: 30%;
+	padding-top: 4px;
+}
+
+.select-industry {
+	width: 15%;
+	padding-top: 4px;
+}
+
+.user-type {
+	padding-top: 4px;
+}
+
+.search-page {
+	margin-top: 20px;
+}
+
+table {
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+
+table tbody tr td {
+	border: 1px solid black;
+}
+
+/*.table-head-flex {
+	display: flex;
+	justify-content: space-around;
+}*/
+
+.employee-flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.employee-intro {
+	display: flex;
+	flex-direction: row;
+}
+.employee-overview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.employee-rating {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.final-rating {
+	align-self: center;
+	margin-left: 10%;
+}
+
+.employee-contact {
+	display: flex;
+	flex-direction: column;
+	width: 22%;
+}
+
+.job-contact {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.interview {
+	margin-right: auto;
+	background-color: blue;
+	color: white;
+	padding: 10px;
+	border-radius: 7px;
+}
+
+.offer {
+	background-color: red;
+	color: white;
+	padding: 10px;	
+	border-radius: 7px;
+}
+
+.employee-phone,
+.employee-email {
+	align-self: center;
+}
+
+.review {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.text-review-header {
+	display: flex;
+	justify-content: space-around;
+	width: 35%;
+}
+
+.stars,
+.overall-rating {
+	align-self: center;
+}
+
+.tab-container {
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+}
+
+.tab {
+	display: flex;
+	justify-content: space-around;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.messages-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.msg-flex {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid black;
+	margin-top: 10px;
+}
+
+.msg-flex img {
+	align-self: center;
+}
+
+.send {
+	width: 100%;
+}
+
+.send-text {
+	margin-left: auto;
+	width: 52%;
+}
+
+.text {
+	width: 100% !important;
+}
+
+.send-files {
+	text-align: center;
+	margin-left: 4%;
+}

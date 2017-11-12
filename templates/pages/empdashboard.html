@@ -1,0 +1,123 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700|Slabo" rel="stylesheet">
+	<title>Project: Employee Review</title>
+</head>
+
+<html>
+
+<body>
+
+	<div class="logo">
+		<img src=#>
+	</div>
+
+	<div class="nav nav-logged">
+		<ul>
+			<li>Home</li>
+			<li>Jobs</li>
+			<li>Co-Workers</li>
+			<li>Messaging</li>
+			<li>Notifications</li>
+			<li><img src=""></li>
+			<li></li>
+		</ul>
+		<div class="login logged-in">
+			<p>Welcome, Autif!</p>
+		</div>
+	</div>
+
+	<div class="tab-container">
+		<div class="tab">
+		  <button class="tablinks" onclick="openTab(event, 'Job')">Job Listings</button>
+		  <button class="tablinks" onclick="openTab(event, 'Messages')">Messages</button>
+		  <button class="tablinks" onclick="openTab(event, 'EmpList')">Employee List</button>
+		  <button class="tablinks" onclick="openTab(event, 'Account')">Account</button>
+		  <button class="tablinks" onclick="openTab(event, 'Settings')">Settings</button>
+		</div>
+
+		<div id="Job" class="tabcontent">
+		  <h3>Job Listings</h3>
+		  <table>
+		  	<tr>
+		  		<td><span>+</span><span>-</span></td>
+		  		<td>Title</td>
+		  		<td>Position</td>
+		  		<td>Start</td>
+		  		<td>End</td>
+		  		<td>Hours</td>
+		  		<td>Salary</td>
+		  	</tr>
+		  	<tr>
+		  		<td></td>
+		  		<td>Selling Appliances</td>
+		  		<td>Sales</td>
+		  		<td>9/6/17</td>
+		  		<td>N/A</td>
+		  		<td>Full-time</td>
+		  		<td>$8/hr plus commission</td>
+		  	</tr>
+		  </table>
+		</div>
+
+		<div id="Messages" class="tabcontent">
+		  <h3>Messages</h3>
+			<div class="messages-container">
+				<div class="inbox">
+					<div class="search-msg">
+						<input type="text" placeholder="Search messages...">
+						<button type="submit">Submit</button>
+					</div>
+
+					<div class="msg">
+						<div class="msg-flex">
+							<img src="#" alt="____-pic">
+							<div class="msg-info">
+								<p>Bob Smith</p>
+								<p>I'm interested in the...</p>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+
+			</div>
+				<div class="current-msg">
+					<div class="send">
+						<div class="send-text">
+							<input type="text" name="chat" placeholder="Enter text">
+							<button type="submit">[Send]</button>
+						</div>
+
+						<div class="send-files">
+							<img alt="[doc]" src="">
+							<img alt="[media]" src="">
+						</div>
+
+					</div>
+				</div>
+		</div>
+
+		<div id="EmpList" class="tabcontent">
+		  <h3>Employee List</h3>
+		  <p>Tokyo is the capital of Japan.</p>
+		</div>
+
+		<div id="Account" class="tabcontent">
+		  <h3>Account</h3>
+		  <p>Tokyo is the capital of Japan.</p>
+		</div>
+
+		<div id="Settings" class="tabcontent">
+		  <h3>Settings</h3>
+		  <p>Tokyo is the capital of Japan.</p>
+		</div>
+	</div>
+<script src="../js/tabs.js"></script>
+</body>
+
+</html>
