@@ -13,6 +13,7 @@ var express = require('express'),
 // CONFIGURE APP
 var app		= express();
 app.use(express.static('templates'));
+app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.use(morgan('dev')); // logs every request to console
@@ -53,6 +54,14 @@ require('./app/config/passport')(passport);
 		res.sendFile(process.cwd() + '/templates/pages/employee.html');
 	});
 
+	// EMPLOYEE API JSON ROUTE
+	app.get('/employee/api', isLoggedIn, function(req, res) {
+		var json_api = res.locals.currentUser;
+		// var json_api = {name: 'John', lastName : 'Smith'};
+
+		res.send(json_api);
+	})
+
 	// EMPLOYEE DASHBOARD ROUTE
 	app.get('/employee/dashboard', function(req, res) {
 		res.sendFile(process.cwd() + '/templates/pages/empdashboard.html');
@@ -84,7 +93,6 @@ require('./app/config/passport')(passport);
     		if(!req.user){ 
     			return next() 
     		}
-    		req.flash("success", "Welcome to Ask Questions");
         	return res.redirect('/profile') 
     	}, function(req, res){
     	res.sendFile(process.cwd() + '/templates/pages/login.html')
@@ -92,7 +100,7 @@ require('./app/config/passport')(passport);
 	
 	app.post('/login', passport.authenticate('local-login',
     	{
-    		successRedirect: '/employee',
+    		successRedirect: '/employee/dashboard',
     		failureRedirect: '/login'
     }));
 
