@@ -5,7 +5,7 @@
 (function(){
 	var userAccount = document.querySelector("#account");
 	var navLogin = document.querySelector("#nav-login");
-	const apiURL = 'http://localhost:5000/employee/api';
+	const apiURL = 'https://hirecntr.herokuapp.com/employee/api';
 	// AJAX request
 	function findUserAccount(method, url, callback) {
 		var xhr = new XMLHttpRequest();
