@@ -4,6 +4,7 @@
 
 (function(){
 	var userAccount = document.querySelector("#account");
+	var navLogin = document.querySelector("#nav-login");
 	const apiURL = 'http://localhost:5000/employee/api';
 	// AJAX request
 	function findUserAccount(method, url, callback) {
@@ -20,8 +21,12 @@
 
 	window.onload = function(){
 		findUserAccount('GET', apiURL, function(data){
-			var user = JSON.parse(data);
+			if(data){
+				var user = JSON.parse(data);
 			userAccount.innerHTML = '<a href="/employee/dashboard">' + user.firstName + ' ' + user.lastName + '</a>';
+			userAccount.innerHTML += '<button><a href="/logout">Logout</a></button>'
+			}
+			return;
 		})
 	}
 

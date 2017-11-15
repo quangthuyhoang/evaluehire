@@ -22,4 +22,4 @@ User.methods.validatePassword = function(password) {
 };
 // User.plugin(passportlocalmongoose); //gives all passport methods to user models
 // The plugin provides already made methods to use without having to write them
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Hirecntr_user', User);

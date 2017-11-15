@@ -6,12 +6,12 @@ var express = require('express'),
 	methodOverride = require('method-override'),
 	passport = require('passport'),
 	morgan = require('morgan'),
-	verify = require('./app/controllers/server.controllers'),
-	dbURL		= process.env.dbURL || 'mongodb://localhost:27017/hirecntr';
+	verify = require('./app/controllers/server.controllers');
 	
 
 // CONFIGURE APP
 var app		= express();
+require('dotenv').config();
 app.use(express.static('templates'));
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use(bodyparser.urlencoded({extended:true}));
@@ -19,7 +19,7 @@ app.use(methodOverride("_method"));
 app.use(morgan('dev')); // logs every request to console
 
 app.use(session({
-	secret: 'secret123',
+	secret: process.env.secretString,
 	resave: false,
 	saveUninitialized: false
 }));
@@ -29,12 +29,12 @@ app.use(passport.session());
 
 
 // CONNECT TO MONGO DATABASE
-mongoose.connect(dbURL);
+mongoose.connect(process.env.MONGO_URI);
 mongoose.Promise = global.Promise;
 function isLoggedIn(req, res, next) {
 	if(req.isAuthenticated()){
 		console.log("middleware",req.user)
-		req.specialData = "hey";
+
 		res.locals.currentUser = req.user; 
 		return next();
 	}
@@ -48,14 +48,14 @@ require('./app/config/passport')(passport);
 	});
 
 	// EMPLOYEE PAGE ROUTE
-	app.get('/employee', isLoggedIn, function(req, res) {
+	app.get('/employee',  function(req, res) {
 		console.log(req.specialData);
 		console.log("user?",res.locals.currentUser);
 		res.sendFile(process.cwd() + '/templates/pages/employee.html');
 	});
 
 	// EMPLOYEE API JSON ROUTE
-	app.get('/employee/api', isLoggedIn, function(req, res) {
+	app.get('/employee/api', verify.isLoggedIn, function(req, res) {
 		var json_api = res.locals.currentUser;
 		// var json_api = {name: 'John', lastName : 'Smith'};
 
@@ -63,7 +63,7 @@ require('./app/config/passport')(passport);
 	})
 
 	// EMPLOYEE DASHBOARD ROUTE
-	app.get('/employee/dashboard', function(req, res) {
+	app.get('/employee/dashboard', verify.isLoggedIn, function(req, res) {
 		res.sendFile(process.cwd() + '/templates/pages/empdashboard.html');
 	})
 
@@ -103,6 +103,12 @@ require('./app/config/passport')(passport);
     		successRedirect: '/employee/dashboard',
     		failureRedirect: '/login'
     }));
+
+    	// LOGOUT ROUTE
+	app.get('/logout', function(req, res){
+		req.logout();
+		res.redirect('/')
+	})
 
 	// CONNECT TO PORT
 	var port = process.env.PORT || 5000;
