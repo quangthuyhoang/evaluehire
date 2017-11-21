@@ -7,12 +7,12 @@ REVIEW EMPLOYEE - GET YOUR FLAIR STICKERS!
 DEADLINE --- 11.19.17 ---
 
 GOALS:
-- REBUILD BACKEND USING NODEJS
-- ADD USER AUTHENTICATION
+- REBUILD BACKEND USING NODEJS [done]
+- ADD USER AUTHENTICATION [done]
 
 STRETCH GOALS:
-- add modal popup box when clicking leave review
-- add search functionality for employees
+- add modal popup box when clicking leave review -- [moved to front end]
+- add search functionality for employees [need to do]
 
 11.14.17 --- BUILD:
 -Navigation is mostly through URL only. Need help adding <a href="#"></a> tags to all navigation links
@@ -24,3 +24,14 @@ STRETCH GOALS:
 5. sign up page = "/signup"
 6. JSON user info page = "/employee/api" (does not need a page. used to transfer object data between server and client)
 -User Authentication is working.
+
+DEADLINE --- 11.26.17 ----
+
+GOALS:
+- ADD REVIEW model and associated routes, controllers
+- EXPAND user model account for both employer/employee
+- ADD LINKEDIN AUTHENTICATION
+- ADD email validation with follow up email confirmation of registration
+
+STRETCH GOALS:
+- ADD search functionality of employee/employer
