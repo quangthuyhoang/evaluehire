@@ -7,6 +7,7 @@ var express = require('express'),
 	passport = require('passport'),
 	morgan = require('morgan'),
 	verify = require('./app/controllers/server.controllers');
+	var Review = require('./app/models/reviews');
 	
 
 // CONFIGURE APP
@@ -42,33 +43,67 @@ function isLoggedIn(req, res, next) {
 }
 
 require('./app/config/passport')(passport);
+// require('./app/config/passport2')(passport);
 	// MAIN LANDING PAGE
 	app.get('/', function(req, res) {
 		res.sendFile(process.cwd() + '/templates/index.html');
 	});
 
 	// EMPLOYEE PAGE ROUTE
-	app.get('/employee',  function(req, res) {
-		console.log(req.specialData);
+	app.get('/employee/:id', verify.findUser, function(req, res) {
+
 		console.log("user?",res.locals.currentUser);
 		res.sendFile(process.cwd() + '/templates/pages/employee.html');
 	});
 
-	// EMPLOYEE API JSON ROUTE
-	app.get('/employee/api', verify.isLoggedIn, function(req, res) {
+	// EMPLOYEE DASHBOARD ROUTE
+	app.get('/employee/:id/dashboard', verify.isLoggedIn, function(req, res) {
+		res.sendFile(process.cwd() + '/templates/pages/empdashboard.html');
+	})
+
+	// EMPLOYEE REVIEW
+	app.get('/employee/:id/review', function(req, res) {
+		res.sendFile(process.cwd() + '/templates/pages/review.html');
+	});
+
+	// ADD REVIEW TO DB ROUTE
+	app.post('/employee/:id/review', verify.isLoggedIn, function(req, res) {
+		console.log("user", res.locals.currentUser);
+		console.log("req.body", req.body);
+		// console.log("req", req);
+		var review = new Review(); 
+		review._user = req.params.id;
+		review._reviewer = res.locals.currentUser._id
+		review.metric.effectiveness.score = req.body.effectiveness;
+		review.metric.speed.score = req.body.speed;
+		review.metric.organization.score = req.body.organization;
+		review.metric.reliability.score = req.body.reliability;
+		review.metric.overall.score = req.body.overall;
+		review.save(function(err) {
+			if(err) {
+				console.log(err);
+			}
+
+			console.log(res.locals.currentUser.firstName + "has written a review");
+			return res.redirect('/employee/:id/review');
+		});
+
+	});
+
+	// API ROUTES
+
+	// USER
+	app.get('/api/employee', verify.isLoggedIn, function(req, res) {
 		var json_api = res.locals.currentUser;
 		// var json_api = {name: 'John', lastName : 'Smith'};
 
 		res.send(json_api);
 	})
-
-	// EMPLOYEE DASHBOARD ROUTE
-	app.get('/employee/dashboard', verify.isLoggedIn, function(req, res) {
-		res.sendFile(process.cwd() + '/templates/pages/empdashboard.html');
+	app.get('/search', function(req, res) {
+		res.sendFile(process.cwd() + '/templates/pages/search.html');
 	})
 
-	// SEARCH ROUTE
-	app.get('/search', function(req, res) {
+	app.get('/search/api', function(req, res) {
 		res.sendFile(process.cwd() + '/templates/pages/search.html');
 	})
 
@@ -79,7 +114,15 @@ require('./app/config/passport')(passport);
 		res.sendFile(process.cwd() + '/templates/pages/signup.html');
 	});
 
-	app.post('/signup', passport.authenticate('local-signup', {
+	// EMPLOYEE REGISTRATION ROUTE
+	app.post('/signup', passport.authenticate('local-signup-1', { 
+		successRedirect : '/',
+    	failureRedirect : '/signup'
+
+	}));
+
+	// EMPLOYER REGISTRATION ROUTE
+	app.post('/signup2', passport.authenticate('local-signup-2', {
 		successRedirect : '/',
     	failureRedirect : '/signup'
 
@@ -93,16 +136,24 @@ require('./app/config/passport')(passport);
     		if(!req.user){ 
     			return next() 
     		}
-        	return res.redirect('/profile') 
+        	return res.redirect('/employee/' + req.user._id) 
     	}, function(req, res){
     	res.sendFile(process.cwd() + '/templates/pages/login.html')
     });
 	
-	app.post('/login', passport.authenticate('local-login',
-    	{
-    		successRedirect: '/employee/dashboard',
-    		failureRedirect: '/login'
-    }));
+	app.post('/login', passport.authenticate('local-login'),
+		function(req, res, next) {
+			console.log("req.user", req.user);
+			if(!req.user) {
+				return res.redirect('/login');
+			}
+			return res.redirect('/employee/' + req.user._id);
+		}
+    	// {
+    	// 	successRedirect: '/employee/' + req.user._id,
+    	// 	failureRedirect: '/login'
+    // })
+    );
 
     	// LOGOUT ROUTE
 	app.get('/logout', function(req, res){

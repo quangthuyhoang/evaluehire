@@ -1,8 +1,8 @@
 'use strict';
 
 var localStrategy = require('passport-local').Strategy;
-var User = require('../models/users');
-// var Employer = require('../models/users2');
+// var User = require('../models/users');
+var Employer = require('../models/users2');
 
 module.exports = function(passport) {
 
@@ -13,62 +13,13 @@ module.exports = function(passport) {
 	});
 	// deserialized user for the session - looks up the id in db and returns user if it is correct, else it errors out
 	passport.deserializeUser(function (id, done) { 
-		User.findById(id, function (err, user) {
+		Employer.findById(id, function (err, user) {
 			done(err, user);
 		});
 
 	});
 
-		// ========== Local Signup For Employee ==========
 
-	passport.use('local-signup-1', new localStrategy({
-		usernameField: 'email',
-		passwordField: 'password',
-		passReqToCallback: true //pass back requse to callback
-	}, function(req, email, password, callback) {
-		process.nextTick(function(){
-
-			User.findOne({'email': email}, function(err, user) {
-				// error hander
-				if(err){
-					console.log(err);
-					return callback(err)
-				}
-				// user email is already registered handler 
-				if(user){
-					console.log(user, "already exists.");
-					return callback(null, false);
-				} else {
-					// email and pw criteria
-					const emailCheck = /\w+@\w+.com/;
-					const pwCriteria = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/; 
-
-					// Check if email already exist 
-					if(!emailCheck.test(email)) {
-						return callback(null, false)
-					}
-					// check if password is correct criteria
-					if(password.length < 6 || !pwCriteria.test(password)) {
-						return callback(null, false)
-					}
-
-					// if no user, create new user
-					var newUser = new User();
-					newUser.email = email;
-					newUser.role = 'Employee';
-					newUser.firstName = req.body.firstName;
-					newUser.lastName = req.body.lastName;
-					newUser.password = newUser.generateHash(password);
-					newUser.save(function(err){
-						if(err)
-							throw err;
-						return callback(null, newUser);
-					})
-
-				}
-			})
-		})
-	}));
 
 	// ========== Local Signup For Employer ==========
 
@@ -80,7 +31,7 @@ module.exports = function(passport) {
 		console.log("check for local-signup-2")
 		process.nextTick(function(){
 			console.log("email", email)
-			User.findOne({'email': email}, function(err, user) {
+			Employer.findOne({'email': email}, function(err, user) {
 				console.log(req.body.employer, user)
 				// error hander
 				if(err){
@@ -106,15 +57,14 @@ module.exports = function(passport) {
 					}
 					console.log("body.employer",req.body.employer)
 					// if no user, create new user
-					var newEmployer = new User();
-					newEmployer.role = 'Employer';
+					var newEmployer = new Employer();
 					newEmployer.email = email;
 					newEmployer.firstName = req.body.employer.firstName;
 					newEmployer.lastName = req.body.employer.lastName;
 					newEmployer.password = newEmployer.generateHash(password);
-					// newEmployer.businessName = req.body.employer.businessName;
-					// newEmployer.taxID = req.body.employer.taxID;
-					// newEmployer.address = req.body.employer.address;
+					newEmployer.businessName = req.body.employer.businessName;
+					newEmployer.taxID = req.body.employer.taxID;
+					newEmployer.address = req.body.employer.address;
 					newEmployer.save(function(err){
 						if(err)
 							throw err;
@@ -128,12 +78,12 @@ module.exports = function(passport) {
 
 		// ========== LOCAL SIGNIN EMPLOYEE ==========
 	
-	passport.use('local-login', new localStrategy({
+	passport.use('local-login-2', new localStrategy({
 		usernameField: 'email', //set username field to be email in callback
 		passwordField: 'password', //set passwordField to be password in callback
 		passReqToCallback: true //allow request to be used in callback
 	}, function(req, email, password, callback) {
-		User.findOne({'email' : email}, function(err, user) {
+		Employer.findOne({'email' : email}, function(err, user) {
 			// error handling
 			if(err){
 				console.log(err);
@@ -153,5 +103,4 @@ module.exports = function(passport) {
 			return callback(null, user);
 		})
 	}));
-
 };

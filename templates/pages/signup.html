@@ -34,11 +34,25 @@
 
   <div class="wrapper">
     <form class="form-signin" action="/signup" method="POST">       
-      <h2 class="form-signin-heading">Sign Up</h2>
+      <h2 class="form-signin-heading">Sign Up As Employee</h2>
       <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
       <input type="text" class="form-control" name="firstName" placeholder="John" required="" autofocus="" />
       <input type="text" class="form-control" name="lastName" placeholder="Smith" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
+
+      <button class="btn btn-lg btn-login btn-block" type="submit">REGISTER</button>   
+    </form>
+    <br>
+    <hr>
+    <form class="form-signin" action="/signup2" method="POST">       
+      <h2 class="form-signin-heading">Sign Up As Employer</h2>
+      <input type="text" class="form-control" name="employer[businessName]" placeholder="Business Name" required="" autofocus="" />
+      <input type="text" class="form-control" name="employer[email]" placeholder="Business Email Address" required="" autofocus="" />
+      <input type="text" class="form-control" name="employer[firstName]" placeholder="Jane" required="" autofocus="" />
+      <input type="text" class="form-control" name="employer[lastName]" placeholder="Smith" required="" autofocus="" />
+      <input type="text" class="form-control" name="employer[taxID]" placeholder="Tax ID" required="" autofocus="" />
+      <input type="text" class="form-control" name="employer[address]" placeholder="Business Address" required="" autofocus="" />
+      <input type="password" class="form-control" name="employer[password]" placeholder="Password" required=""/>      
 
       <button class="btn btn-lg btn-login btn-block" type="submit">REGISTER</button>   
     </form>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700|Slabo" rel="stylesheet">
+	<title>Project: Employee Review</title>
+</head>
+<body>
+
+	<div class="logo">
+		<img src=#>
+	</div>
+
+	<div class="nav nav-logged">
+		<ul>
+			<li>Home</li>
+			<li>Jobs</li>
+			<li>Co-Workers</li>
+			<li>Messaging</li>
+			<li>Notifications</li>
+			<li><img src=""></li>
+			<li></li>
+		</ul>
+		<div class="login logged-in">
+			<p>Welcome, Autif!</p>
+		</div>
+	</div>
+
+<div class="container ">
+    <img id="logo" src="/public/img/boldmedia_logo.png">
+  </div>
+
+  <div class="wrapper">
+
+    <form name="review" class="form-signin" action="/employee/:id/review" method="POST">       
+      <h2 class="form-signin-heading">WRITE REVIEW</h2>
+      <div class="container">
+      	<label for="effectiveness">Effectiveness</label>
+      	<input type="number" min="1" max="5" name="effectiveness" required="" autofocus="" />
+      </div>	
+      <div class="container">
+      	<label for="speed">Speed</label>
+      	<input type="number" min="1" max="5" name="speed" required="" autofocus="" />
+      </div>	
+      <div class="container">
+      	<label for="communication">communication</label>
+      	<input type="number"  min="1" max="5" name="communication" required="" autofocus="" />
+      </div>
+      <div class="container">
+      	<label for="organization">organization</label>
+      	<input type="number"  min="1" max="5" name="organization" required="" autofocus="" />
+      </div>
+      <div class="container">
+      	<label for="reliability">reliability</label>
+      	<input type="number"  min="1" max="5" name="reliability" required="" autofocus="" />
+      </div>
+      <br>
+      <div class="container">
+      	<label for="overall">overall</label>
+      	<input type="number"  min="1" max="5" name="overall" required="" autofocus="" />
+      	<textarea name="summary"></textarea>
+      </div>
+
+      <button class="btn btn-lg btn-login btn-block" type="submit">SUBMIT</button>   
+    </form>
+
+  </div>
+
+  <script type="text/javascript" src="/controllers/client.updateAction.controller.js"></script>
+
+  </body>

@@ -34,7 +34,14 @@
 
   <div class="wrapper">
     <form class="form-signin" action="/login" method="POST">       
-      <h2 class="form-signin-heading">LOGIN</h2>
+      <h2 class="form-signin-heading">LOGIN AS EMPLOYEE</h2>
+      <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
+      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
+
+      <button class="btn btn-lg btn-login btn-block" type="submit">SIGN IN</button>   
+    </form>
+    <form class="form-signin" action="/login2" method="POST">       
+      <h2 class="form-signin-heading">LOGIN AS EMPLOYER</h2>
       <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
       <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
 
