@@ -20,7 +20,8 @@ var query = document.querySelector('#query');
 				var filteredList = Query(data, objKeys, lookup) // filter out list based on lookup value
 
 				filteredList.forEach(function(item) { // convert filtered items to html list tags
-					newlist += '<li>' + item.email + ', ' +item.firstName +', ' +item.lastName + '</li>';
+					newlist += '<li>' + item.email + ', ' +item.firstName +', ' +item.lastName +
+					 '<a href="/employee/'+ item._id +'">link</a></li>';
 				})
 				queryList.innerHTML = newlist; // update html page
 			});
