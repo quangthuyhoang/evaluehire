@@ -8,6 +8,7 @@ var express = require('express'),
 	morgan = require('morgan'),
 	verify = require('./app/controllers/server.controllers');
 	var Review = require('./app/models/reviews');
+	var User = require('./app/models/users');
 	
 
 // CONFIGURE APP
@@ -99,13 +100,24 @@ require('./app/config/passport')(passport);
 
 		res.send(json_api);
 	})
+
+	app.get('/api/search', function(req, res) {
+		User.find({},function(err, user) {
+			console.log(user);
+			if(err){
+				return res.send(err);
+			}
+
+			res.send(user);
+		})
+		// res.sendFile(process.cwd() + '/templates/pages/search.html');
+	})
+
 	app.get('/search', function(req, res) {
 		res.sendFile(process.cwd() + '/templates/pages/search.html');
 	})
 
-	app.get('/search/api', function(req, res) {
-		res.sendFile(process.cwd() + '/templates/pages/search.html');
-	})
+	
 
 	// ============= AUTHENTICATION ROUTES ==============
 

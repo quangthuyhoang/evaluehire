@@ -28,10 +28,17 @@ STRETCH GOALS:
 DEADLINE --- 11.26.17 ----
 
 GOALS:
-- ADD REVIEW model and associated routes, controllers
-- EXPAND user model account for both employer/employee
+- ADD REVIEW model and associated routes, controllers [done]
+- EXPAND user model account for both employer/employee [done]
+- ADD search functionality of employee/employer [done-ish]
+
+STRETCH GOALS:
 - ADD LINKEDIN AUTHENTICATION
 - ADD email validation with follow up email confirmation of registration
 
-STRETCH GOALS:
-- ADD search functionality of employee/employer
+11.24.17 --- BUILD:
+- updated user page routes: '/employee/:id'
+- added review model. Reviews can be added to each user 
+- added user input review page route: '/employee/:id/review'
+- modified user model to account for employee and employer accounts
+- added basic search.html, search functionality, search route: '/search' and search api '/search/api'

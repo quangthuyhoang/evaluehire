@@ -21,6 +21,15 @@ User.methods.generateHash = function(password) {
 User.methods.validatePassword = function(password) {
 	return bcrypt.compareSync(password, this.password);
 };
+
+// determine object size
+User.methods.size = function(obj) {
+	var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 // User.plugin(passportlocalmongoose); //gives all passport methods to user models
 // The plugin provides already made methods to use without having to write them
 module.exports = mongoose.model('Hirecntr_user', User);
