@@ -4,7 +4,7 @@
 	var userAccount = document.querySelector("#account");
 	var navLogin = document.querySelector("#nav-login");
 	var currentUrl = window.location.href.split('/')[2]; //pull current URL
-	const apiURL = 'http://' + currentUrl + '/api/employee/'//+ eID[4]; //build fetch api url
+	const apiURL = 'https://' + currentUrl + '/api/employee/'//+ eID[4]; //build fetch api url
 
 
 	// AJAX request

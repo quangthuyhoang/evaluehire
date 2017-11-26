@@ -4,7 +4,7 @@ var query = document.querySelector('#query');
 	var queryList = document.getElementById('user-list');
 	var currentUrl = window.location.href.split('/')[2];
 	var Keys = ['email', 'firstName', 'lastName'];
-	var apiURL = 'http://' + currentUrl + '/api/search' //build fetch api url
+	var apiURL = 'https://' + currentUrl + '/api/search' //build fetch api url
 	// const apiURL = 'https://hirecntr.herokuapp.com/employee/api';
 
 
