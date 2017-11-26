@@ -1,7 +1,8 @@
 'use strict';
 var express = require('express'),
 	router = express.Router(), //Router({mergeParams: true}) will pass through objects for params.id
-	verify = require('../app/controllers/server.controllers');
+	verify = require('../app/controllers/server.controllers'),
+	Review = require('../app/models/reviews');
 
 // EMPLOYEE PAGE ROUTE
 	router.get('/employee/:id', verify.findUser, function(req, res) {

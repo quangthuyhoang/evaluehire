@@ -7,6 +7,7 @@
 	const apiURL = 'https://' + currentUrl + '/api/employee/'//+ eID[4]; //build fetch api url
 
 
+
 	// AJAX request
 	function findUserAccount(method, url, callback) {
 		var xhr = new XMLHttpRequest();
