@@ -36,15 +36,6 @@ app.use(passport.session());
 // CONNECT TO MONGO DATABASE
 mongoose.connect(process.env.MONGO_URI);
 mongoose.Promise = global.Promise;
-// function isLoggedIn(req, res, next) {
-// 	if(req.isAuthenticated()){
-// 		console.log("middleware",req.user)
-
-// 		res.locals.currentUser = req.user; 
-// 		return next();
-// 	}
-// 	return res.redirect('/login');
-// }
 
 require('./app/config/passport')(passport);
 // require('./app/config/passport2')(passport);

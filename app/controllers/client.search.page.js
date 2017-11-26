@@ -1,5 +1,5 @@
 'use strict';
-
+// Declared variables
 var query = document.querySelector('#query');
 	var queryList = document.getElementById('user-list');
 	var currentUrl = window.location.href.split('/')[2];

@@ -3,10 +3,10 @@
 (function(){
 	var userAccount = document.querySelector("#account");
 	var navLogin = document.querySelector("#nav-login");
-	var currentUrl = window.location.href; //pull current URL
-	const apiURL = 'http://localhost:5000/api/employee/'//+ eID[4]; //build fetch api url
+	var currentUrl = window.location.href.split('/')[2]; //pull current URL
+	const apiURL = 'http://' + currentUrl + '/api/employee/'//+ eID[4]; //build fetch api url
 
-	// const apiURL = 'https://hirecntr.herokuapp.com/employee/api';
+
 	// AJAX request
 	function findUserAccount(method, url, callback) {
 		var xhr = new XMLHttpRequest();
